@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "name": "projeto-imfy",
+  "version": "1.0.0",
+  "description": "Website da empresa IMFY",
+  "main": "script.js",
+  "devDependencies": {},
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedruxo/IMFY-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedruxo/IMFY-Project/issues"
+  },
+  "homepage": "https://github.com/pedruxo/IMFY-Project#readme"
+}
