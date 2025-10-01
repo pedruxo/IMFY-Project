@@ -1,21 +1,31 @@
-const express = require('express');
-const cors = require('cors');
-const { GoogleGenerativeLanguageServiceClient } = require('@google/generative-ai');
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import statusMessages from '../statusMessages.js';
 
-const statusMessages = require('./statusMessages');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRoot = path.join(__dirname, '..');
 
 const app = express();
 const port = 3000;
 
-const YOUR_API_KEY = "SUA_CHAVE_DE_API_AQUI"; 
+const YOUR_API_KEY = "SUA_CHAVE_DE_API_AQUI";
 const textOnlyModel = 'models/gemini-pro';
 
-const client = new GoogleGenerativeLanguageServiceClient({
+const client = new GoogleGenerativeAI({
     auth: { apiKey: YOUR_API_KEY },
 });
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(projectRoot));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(projectRoot, 'index.html'));
+});
 
 app.post('/api/chat', async (req, res) => {
     const { message } = req.body;
