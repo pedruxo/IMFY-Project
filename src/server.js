@@ -12,11 +12,16 @@ const projectRoot = path.join(__dirname, '..');
 const app = express();
 const port = 3000;
 
-const YOUR_API_KEY = "SUA_CHAVE_DE_API_AQUI";
+const API_KEY = process.env.GEMINI_API_KEY;
+
+if (!API_KEY) {
+    console.error("Erro: A chave de API não foi definida no ambiente.");
+}
+
 const textOnlyModel = 'models/gemini-pro';
 
 const client = new GoogleGenerativeAI({
-    auth: { apiKey: YOUR_API_KEY },
+    auth: { apiKey: API_KEY },
 });
 
 app.use(cors());
