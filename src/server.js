@@ -20,9 +20,7 @@ if (!API_KEY) {
 
 const textOnlyModel = 'models/gemini-pro';
 
-const client = new GoogleGenerativeAI({
-    auth: { apiKey: API_KEY },
-});
+const client = new GoogleGenerativeAI({ apiKey: API_KEY });
 
 app.use(cors());
 app.use(express.json());
